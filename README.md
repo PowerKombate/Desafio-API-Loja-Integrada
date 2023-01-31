@@ -36,11 +36,20 @@ referenciando o repositório base e a respectiva interface.
 
 # Referências e Links Importantes
 
-Youtube: 'Playlist ASP.NET CORE MVC DO ZERO!' -> Café Com Bug | <https://www.youtube.com/playlist?list=PLhna1crYw0SP_CN5q8_DfF2aMQ2ez_6Wd>
-Youtube: Configurações do Git  'Mód02' -> Marco Bruno | <https://www.youtube.com/@MarcoBrunoDev>
-Youtube: 'Curso de C# Para Iniciantes - C# 10 .NET 6 e VS Code' -> Fredi | <https://www.youtube.com/watch?v=oTivhgjbhIg&t=5470s>
-Youtube: 'Curso de C# - Aprenda o essencial em 5 HORAS' -> Victor Lima - Guia do Programador | <https://www.youtube.com/watch?v=PKMm-cHe56g>
-Youtube: C#, .NET, Azure, Moq, etc. -> Código Fonte TV | <https://www.youtube.com/@codigofontetv>
+Youtube: 'Playlist ASP.NET CORE MVC DO ZERO!' -> Café Com Bug | 
+<https://www.youtube.com/playlist?list=PLhna1crYw0SP_CN5q8_DfF2aMQ2ez_6Wd>
+
+Youtube: Configurações do Git  'Mód02' -> Marco Bruno | 
+<https://www.youtube.com/@MarcoBrunoDev>
+
+Youtube: 'Curso de C# Para Iniciantes - C# 10 .NET 6 e VS Code' -> Fredi | 
+<https://www.youtube.com/watch?v=oTivhgjbhIg&t=5470s>
+
+Youtube: 'Curso de C# - Aprenda o essencial em 5 HORAS' -> Victor Lima - Guia do Programador | 
+<https://www.youtube.com/watch?v=PKMm-cHe56g>
+
+Youtube: C#, .NET, Azure, Moq, etc. -> Código Fonte TV | 
+<https://www.youtube.com/@codigofontetv>
 
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
