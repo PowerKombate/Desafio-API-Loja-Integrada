@@ -2,6 +2,10 @@
 
 O Desafio API Loja Integrada tem como objetivo desenvolver API's que façam papéis cruciais no sistema principal de uma empresa.
 
+
+![alt text](/imagem_2023-01-31_142858093.png)
+
+
 # Passo a Passo
 
 Guia de Como Instalar e Configurar a plataforma Visual Studio com os Frameworks e Repositórios:
