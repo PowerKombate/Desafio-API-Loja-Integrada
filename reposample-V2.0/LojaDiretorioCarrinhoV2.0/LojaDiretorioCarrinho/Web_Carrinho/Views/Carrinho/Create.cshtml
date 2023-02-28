@@ -1,0 +1,220 @@
+﻿@model Web_Carrinho.Models.CarrinhoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Cadastro do Carrinho</h4>
+<hr />
+
+<div>
+    <a class="btn btn-dark" asp-action="Index">Voltar</a>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div hidden class="form-group">
+                <input id="id_Cliente" asp-for="IdCliente" class="form-control" />
+            </div>
+
+            <div hidden class="form-group">
+                <input id="id_Produto" asp-for="IdProduto" class="form-control" />
+            </div>
+
+            <div class="card">
+                <div class="card-header">Clientes</div>
+                <div class="card-body">
+                    <table id="listClienteTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliCpf)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliNome)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliEmail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliTelefone)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliEndereco)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliCidade)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.oListCliente)
+                            {
+                                <tr onclick="passId_Cliente('@item.Id')">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliCpf)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliNome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliEmail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliTelefone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliEndereco)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliCidade)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+                <div class="card-header">Produtos</div>
+                <div class="card-body">
+                    <table id="listProdutoTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oProduto.PdtNome)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oProduto.PdtPreco)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oProduto.PdtMarca)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oProduto.PdtLocalProduto)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.oListProduto)
+                            {
+                                <tr onclick="passId_Produto('@item.Id')">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdtNome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdtPreco)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdtMarca)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PdtLocalProduto)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+                <div class="card-header">Informações Adicionais</div>
+                <div class="card-body row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="DataCompra" class="control-label"></label>
+                            <input readonly="readonly" asp-for="DataCompra" class="form-control" />
+                            <span asp-validation-for="DataCompra" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="Frete" class="control-label"></label>
+                            <input asp-for="Frete" class="form-control" />
+                            <span asp-validation-for="Frete" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Adicionar ao Carrinho" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts 
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        // Seção Java Script do Plug-in DataTables
+
+        $(document).ready(function () {
+
+            var listClienteTable = $('#listClienteTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+            var listProdutoTable = $('#listProdutoTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+
+            // Tabela do Cliente
+
+            $('#listClienteTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    listClienteTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+            // Tabela do Produto
+
+            $('#listProdutoTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    listProdutoTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+        });
+
+
+        function passId_Cliente(id_Cliente)
+        {
+            document.getElementById('id_Cliente').value = id_Cliente;
+        }
+
+        function passId_Produto(id_Produto)
+        {
+            document.getElementById('id_Produto').value = id_Produto;
+        }
+
+    </script>
+
+}
